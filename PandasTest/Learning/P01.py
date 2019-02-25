@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 
-os.chdir("E:\\DataScience\\Data\\PluralPandasFundamentals\\02\\demos\\collection-master")
+os.chdir("E:\\DataScience\\PythonForDataScience\\PandasTest\\Data")
 
 inputDF = pd.read_csv("artwork_data.csv", index_col="id", dtype={'dimensions': 'str'}) #, nrows=100)
 
