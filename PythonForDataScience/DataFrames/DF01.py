@@ -1,17 +1,37 @@
-import pandas as pd
+"""
+Dataframes
+----------
+
+A simple exercise showing the various options to work with DataFrames in python.
+
+"""
 import numpy as np
+import pandas as pd
 import os
 
 os.chdir("E:\\DataScience\\PythonForDataScience\\PandasTest\\Data")
 
-inputDF = pd.read_csv("artwork_data.csv", index_col="id", dtype={'dimensions': 'str'}) #, nrows=100)
+inputDF = pd.read_csv("artwork_data.csv", index_col="id", dtype={'dimensions': 'str'}, low_memory=False)  # , nrows=100)
 
 artists = inputDF["artist"]  # extract the list of artists from the data frame
+inputDF.head(10)
+
+inputDF['artist'][3]  # get particular row from a given column
+inputDF['artist'][:3]  # first 3 rows of a given column
+inputDF[['artist', 'title']]   # extract multiple columns
+
+inputDF.sort_values(['artist']) # Sort by one column
+inputDF.sort_values(['artist', 'title']) # Sort by multiple columns
+
+
 uniqueArtists = pd.unique(artists)  # Extract unique names of the artists
 print(len(uniqueArtists))
 
 inputDF.shape  # Count of rows, columns
+
 inputDF.shape[0]  # count of rows
+len(inputDF)  # Count of rows, same as above
+
 inputDF.shape[1]  # count of columns
 
 # Filtering the Dataframe
@@ -25,14 +45,13 @@ artistsCount["Blake, Robert"]
 # Indexing and Filtering
 # DataFrame.loc
 inputDF.loc[1037, 'artist']  # provide the row label and the column label
-inputDF.loc[inputDF['artist'] == 'Blake, Robert',:]  # here we are filtering by providing the condition and the : in the column indexer says we need all the columns
+inputDF.loc[inputDF['artist'] == 'Blake, Robert', :]  # here we are filtering by providing the condition and the : in the column indexer says we need all the columns
 
 # DataFrame.iloc    - It uses the index instead of labels
 inputDF.iloc[0, 0]  # get value from first row and first column
 inputDF.iloc[10, :]  # get all columns from first row
 inputDF.iloc[:, 0]  # get all rows from first column
 inputDF.iloc[2:6, [1, 2, 3]]  # here am actually asking for rows from 2 to 6 (zero index) and columns 2,3,4
-
 
 inputDF.head(n=5)
 inputDF['width'].sort_values().head()
@@ -100,7 +119,7 @@ filled_df = transform_df(small_df)
 # BUILT-INS
 # Transform
 grouped_mediums = small_df.groupby('artist')['medium']
-small_df.loc[:, 'medium'] = grouped_mediums.transform(fill_values)      # insteading of writing our own transform function, we can use the built in function
+small_df.loc[:, 'medium'] = grouped_mediums.transform(fill_values)  # insteading of writing our own transform function, we can use the built in function
 
 # Min
 inputDF.groupby('artist').agg(np.min)
