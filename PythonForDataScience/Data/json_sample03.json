@@ -1,0 +1,27 @@
+{
+    "OFile": "Scan.csv",
+    "ToDelete": ["pclass", "ticket"],
+    "OColumns": [
+        {
+            "IName": "survived",
+            "OName": "Survive",
+            "Mapping": "F",
+            "Regex" : "",
+            "DType": "string"
+        },
+        {
+            "IName": "name",
+            "OName": "FullName",
+            "Mapping": "F",
+            "Regex" : "",
+            "DType": "string"
+        },
+        {
+            "IName": "sex",
+            "OName": "Sex",
+            "Mapping": "F",
+            "Regex" : "",
+            "DType": "string"
+        }
+    ]
+}
