@@ -2,10 +2,12 @@ import pandas as pd
 import numpy as np
 import re
 
-# productList = pd.read_csv('Data/flipkartProductReview.csv', index_col = 'uniq_id', usecols = ['uniq_id', 'product_name', 'pid']) #, nrows = 5)
-productList = pd.read_csv('Utilities/Products_2K.csv')
-# productList = pd.read_csv('Utilities/ProductList.csv')
+productList = pd.read_csv('Products_2K.csv')
+# productList = pd.read_csv('productlist.csv')
 productList.shape
+
+#productList['product_Name'] = productList['product_Name'].str.translate(None, ",~`!@#$%^&*()_-+=?.{}[]|\/<>:;")
+# productList['product_Name'] = productList['product_Name'].str.replace('\W','')
 
 # drop all rows where product_name is empty
 productList.drop(productList[~productList.product_name.notnull()].index, inplace = True)
