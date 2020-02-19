@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import re
+
 
 # df = pd.read_csv('en.openfoodfacts.org.products.csv', error_bad_lines=False, sep = '\t', usecols = ['product_name','generic_name', 'quantity', 'brands', 'brands_tags', 'categories', 'categories_tags', 'categories_en'])
 
@@ -14,3 +16,10 @@ df = pd.read_csv('Utilities/test_0.csv')
 #     df.head(2000).to_csv("test_"+str(x)+".csv", header = True, index = False)
 
 x = df.groupby('product_name','generic_name', 'quantity', 'brands', 'brands_tags', 'categories', 'categories_tags', 'categories_en')['product_name'].count().sort_values(ascending=True)
+
+from quantulum3 import parser
+
+quants = parser.parse('Caress Velvet Bliss Ultra Silkening Beauty Bar Qty 6 Ct')
+parser.parse('I want nine gallons of beer')
+q = parser.parse('LINDT MILK NO SUGAR ADDED 10 gm X 2 X 16')
+" ".join([(x.surface) for x in q])

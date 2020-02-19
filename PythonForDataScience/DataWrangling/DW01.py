@@ -61,3 +61,5 @@ x = inputDF.drop(importConfig["ToDelete"], axis = 1)
 
 if importConfig["OColumns"][0]["Mapping"] == 'F':
     x.rename(columns={importConfig["OColumns"][0]["IName"]:importConfig["OColumns"][0]["OName"]},inplace = True)
+#else:
+    # x[importConfig["OColumns"][0]["OName"]] = inputDF['name'].str.extract()
